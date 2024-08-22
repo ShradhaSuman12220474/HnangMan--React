@@ -4,13 +4,14 @@ import TextInputForm from "./TextInputForm";
 import { useState } from "react";
 
 
-function TextInputFormContainer(){
+function TextInputFormContainer({onSubmit}){
     const [value,setValue] = useState('');//state variable
     const [inputType, setInputType] = useState('password');
 
     function handleFormSubmit(event){
         event.preventDefault();
         console.log("form submited");
+        onSubmit?.(value); // if onSubmit is defined, call it with the value
         console.log(value);
     }
     function handleTextInputChange(event){
